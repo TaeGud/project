@@ -1,0 +1,1342 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700&display=swap');
+
+:root {
+    --forest-deep: #1a2421;
+    --forest-moss: #4a5d4e;
+    --paper-old: #f2ede4;
+    --accent-leaf: #7b8e78;
+    --text-main: #2c2c2c;
+    --text-sub: #5f6368;
+
+    --shadow-elegant: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif KR', serif;
+    background-color: var(--paper-old);
+    color: var(--text-main);
+    background-image:
+        radial-gradient(circle at top right, rgba(74, 93, 78, 0.05), transparent),
+        radial-gradient(circle at bottom left, rgba(61, 48, 40, 0.05), transparent);
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 1. Header */
+#header {
+    background: rgba(242, 237, 228, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    filter: grayscale(20%);
+}
+
+.logo-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: var(--forest-deep);
+}
+
+.tier-badge {
+    background: linear-gradient(135deg, var(--forest-moss), var(--accent-leaf));
+    color: white;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.book-count {
+    font-size: 1rem;
+    color: var(--text-sub);
+    font-weight: 500;
+}
+
+.book-count strong {
+    color: var(--forest-deep);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-soft);
+}
+
+/* 2. Main Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem 2rem 1.5rem;
+}
+
+/* 3. Search */
+.search-section {
+    margin-bottom: 3rem;
+}
+
+.search-container {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-family: 'Noto Serif KR', serif;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    background: #fff;
+    border-color: var(--forest-moss);
+    box-shadow: 0 0 0 4px rgba(74, 93, 78, 0.1);
+}
+
+.search-button {
+    background: var(--forest-moss);
+    border: none;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    background: var(--forest-deep);
+    transform: scale(1.05);
+}
+
+/* Search Results */
+.search-results {
+    display: grid;
+    gap: 1rem;
+}
+
+.search-result-item {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.search-result-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px);
+}
+
+.result-thumbnail {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.result-info {
+    flex: 1;
+}
+
+.result-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin-bottom: 0.4rem;
+}
+
+.result-meta {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 0.75rem;
+}
+
+.result-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 0.625rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Noto Serif KR', serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+.start-reading-btn {
+    border-color: #10b981;
+}
+
+.start-reading-btn:hover {
+    background: #d1fae5;
+    border-color: #059669;
+}
+
+.complete-now-btn {
+    border-color: var(--accent-leaf);
+}
+
+.complete-now-btn:hover {
+    background: #f0f4e8;
+    border-color: var(--forest-moss);
+}
+
+/* 4. Reading Section */
+.reading-section {
+    margin: 3rem 0;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin-bottom: 1.25rem;
+}
+
+.reading-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.reading-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid #10b981;
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.reading-card:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+}
+
+.reading-card img {
+    width: 70px;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.reading-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.reading-badge {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 0.25rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    align-self: flex-start;
+}
+
+.reading-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin: 0;
+}
+
+.reading-info p {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    margin: 0;
+}
+
+.reading-days {
+    font-size: 0.8rem !important;
+    color: #059669 !important;
+    font-weight: 600 !important;
+    margin-top: 0.25rem !important;
+}
+
+/* Main Title */
+.main-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--forest-deep);
+    margin: 1rem 0 1.5rem 0;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+/* 5. Bookshelf */
+.library-section {
+    margin-bottom: 3rem;
+}
+
+.library-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avg-rating {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-sub);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-sub);
+}
+
+.empty-icon {
+    margin: 0 auto 1rem;
+    opacity: 0.3;
+}
+
+.empty-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin-bottom: 0.5rem;
+}
+
+.empty-text {
+    font-size: 1rem;
+    color: var(--text-sub);
+}
+
+.bookshelf {
+    background: linear-gradient(to bottom, #e8dcc8 0%, #d4c4af 100%);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: var(--shadow-elegant);
+    position: relative;
+    border: 8px solid #c9b5a0;
+    background-image:
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent calc(20% - 4px),
+            rgba(139, 115, 85, 0.15) calc(20% - 4px),
+            rgba(139, 115, 85, 0.15) calc(20% + 4px)),
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 120px,
+            rgba(139, 115, 85, 0.15) 120px,
+            rgba(139, 115, 85, 0.15) 128px);
+}
+
+.bookshelf::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    height: 12px;
+    background: linear-gradient(to bottom, #d4c4af, #c9b5a0);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bookshelf::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: -12px;
+    right: -12px;
+    height: 12px;
+    background: linear-gradient(to bottom, #c9b5a0, #b8a590);
+    border-radius: 0 0 8px 8px;
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.bookshelf-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    position: relative;
+    min-height: 200px;
+    padding: 15px;
+}
+
+.month-divider {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.15), transparent);
+    margin: 10px 0;
+}
+
+.month-label {
+    grid-column: 1 / -1;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    padding: 8px 12px;
+    line-height: 1.3;
+}
+
+/* Tier variations */
+.bookshelf.marble {
+    background: linear-gradient(to bottom, #f0e6d8 0%, #e0d6c8 100%);
+    border-color: #d0c0b0;
+}
+
+.bookshelf.marble::before {
+    background: linear-gradient(to bottom, #e0d6c8, #d0c0b0);
+}
+
+.bookshelf.gold {
+    background: linear-gradient(to bottom, #f5ead8 0%, #e8dcc8 100%);
+    border-color: #d4c4af;
+    box-shadow:
+        var(--shadow-elegant),
+        0 0 40px rgba(212, 175, 55, 0.15);
+}
+
+.bookshelf.gold::before {
+    background: linear-gradient(to bottom, #e8dcc8, #d4c4af);
+}
+
+/* 6. Analytics */
+.analytics-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.category-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.unified-chart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-center-text {
+    position: absolute;
+    text-align: center;
+}
+
+.total-books {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--forest-deep);
+    line-height: 1;
+}
+
+.total-label {
+    font-size: 1rem;
+    color: var(--text-sub);
+    margin-top: 0.25rem;
+}
+
+.category-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.legend-name {
+    font-weight: 600;
+    color: var(--forest-deep);
+    min-width: 60px;
+}
+
+.legend-stats {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+}
+
+/* 7. Achievement */
+.achievement {
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    backdrop-filter: blur(5px);
+}
+
+.achievement-icon {
+    color: var(--accent-leaf);
+    flex-shrink: 0;
+}
+
+.achievement-content {
+    flex: 1;
+}
+
+.achievement-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin-bottom: 0.5rem;
+}
+
+.achievement-text {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 0.75rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--forest-moss), var(--accent-leaf));
+    border-radius: 4px;
+    transition: width 0.6s ease;
+}
+
+/* 8. Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1rem;
+}
+
+.modal-wrapper {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 4px;
+}
+
+.close-button {
+    position: sticky;
+    top: 8px;
+    float: right;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-main);
+    z-index: 10;
+    margin: 8px 8px 0 0;
+}
+
+.close-button:hover {
+    background: white;
+    transform: rotate(90deg);
+}
+
+.book-pages {
+    background: #fff;
+    border: none;
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    display: flex;
+    min-height: 0;
+}
+
+.book-page {
+    flex: 1;
+    padding: 2.5rem;
+}
+
+.left-page {
+    background: linear-gradient(to right, #fdfdfd, #f4f4f4);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-book-cover {
+    max-width: 180px;
+    max-height: 270px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+}
+
+.modal-book-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.modal-book-author,
+.modal-book-publisher {
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+/* Right page form */
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin-bottom: 0.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.star-rating {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.star-btn:hover {
+    transform: scale(1.15);
+}
+
+.star-icon {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: var(--forest-moss);
+    stroke-width: 2;
+    opacity: 0.3;
+    transition: all 0.2s ease;
+}
+
+.star-btn.active .star-icon {
+    fill: var(--forest-moss);
+    opacity: 1;
+}
+
+.form-dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.date-input {
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.date-input:focus {
+    outline: none;
+    border-color: var(--forest-moss);
+    box-shadow: 0 0 0 3px rgba(74, 93, 78, 0.1);
+}
+
+.review-textarea {
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.8);
+    resize: vertical;
+    min-height: 120px;
+    transition: all 0.3s ease;
+}
+
+.review-textarea:focus {
+    outline: none;
+    border-color: var(--forest-moss);
+    box-shadow: 0 0 0 3px rgba(74, 93, 78, 0.1);
+}
+
+.form-privacy {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.privacy-btn {
+    padding: 0.6rem 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.privacy-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: var(--shadow-soft);
+}
+
+.privacy-btn.public {
+    border-color: var(--forest-moss);
+    background: rgba(74, 93, 78, 0.1);
+}
+
+.submit-btn {
+    padding: 0.875rem 1.75rem;
+    background: var(--forest-moss);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    background: var(--forest-deep);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+/* 9. Book Card */
+.book-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(5px);
+}
+
+.book-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-soft);
+}
+
+.book-cover-wrapper {
+    width: 100%;
+    aspect-ratio: 2/3;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-card:hover .book-cover-wrapper {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.book-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.book-card-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+}
+
+.book-card-rating {
+    font-size: 0.75rem;
+    color: var(--forest-moss);
+}
+
+/* 10. Calendar */
+.icon-btn {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    font-size: 1.2rem;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-soft);
+}
+
+.calendar-wrapper {
+    background: var(--paper-old);
+    border-radius: 16px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    box-shadow: var(--shadow-elegant);
+    position: relative;
+}
+
+.calendar-wrapper .close-button {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 10;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.calendar-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin: 0;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-nav-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.calendar-nav-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.calendar-month {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin: 0;
+}
+
+.calendar-view-options {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-view-btn {
+    background: var(--forest-moss);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-view-btn:hover {
+    background: var(--forest-deep);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.calendar-weekday {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    padding: 0.5rem;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.calendar-day.empty {
+    background: transparent;
+    cursor: default;
+}
+
+.calendar-day:not(.empty):hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.05);
+}
+
+.calendar-day.today {
+    background: rgba(74, 93, 78, 0.2);
+    border: 2px solid var(--forest-moss);
+}
+
+.calendar-day.has-books {
+    background: linear-gradient(135deg, rgba(74, 93, 78, 0.15), rgba(123, 142, 120, 0.15));
+    font-weight: 600;
+}
+
+.day-number {
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.book-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--forest-moss);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 4px;
+}
+
+/* Calendar Books - grid for book items */
+.calendar-books {
+    margin-top: 1.5rem;
+}
+
+.calendar-books-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin-bottom: 1rem;
+}
+
+.no-books {
+    text-align: center;
+    color: var(--text-sub);
+    padding: 2rem;
+}
+
+.calendar-books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.calendar-book-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.calendar-book-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-soft);
+}
+
+.calendar-book-cover {
+    width: 100%;
+    aspect-ratio: 2/3;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.calendar-book-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    background: linear-gradient(to bottom, #f5f5f0, #e8e8e0);
+}
+
+.calendar-book-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.calendar-book-info h5 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--forest-deep);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+}
+
+.calendar-book-info p {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    margin: 0;
+}
+
+.calendar-book-date {
+    font-size: 0.65rem;
+    color: var(--forest-moss);
+    font-weight: 600;
+}
+
+.calendar-book-rating {
+    font-size: 0.75rem;
+    color: var(--forest-moss);
+}
+
+/* 11. Dark Mode */
+body.dark-mode {
+    --paper-old: #1a1410;
+    --forest-deep: #e8dfd1;
+    --text-main: #e8dfd1;
+    --text-sub: #c9b5a0;
+}
+
+body.dark-mode #header {
+    background: rgba(26, 20, 16, 0.9);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-input,
+body.dark-mode .search-result-item,
+body.dark-mode .reading-card,
+body.dark-mode .achievement {
+    background: rgba(42, 35, 28, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .book-pages {
+    background: #2a231c;
+}
+
+body.dark-mode .left-page {
+    background: linear-gradient(to right, #2a231c, #252018);
+    border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .right-page {
+    background: #2a231c;
+}
+
+body.dark-mode .date-input,
+body.dark-mode .review-textarea,
+body.dark-mode .privacy-btn {
+    background: rgba(42, 35, 28, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-main);
+}
+
+body.dark-mode .close-button {
+    background: rgba(42, 35, 28, 0.9);
+    color: var(--text-main);
+}
+
+body.dark-mode .book-card {
+    background: rgba(42, 35, 28, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .book-card:hover {
+    background: rgba(52, 45, 38, 0.9);
+}
+
+body.dark-mode .calendar-wrapper {
+    background: var(--paper-old);
+}
+
+body.dark-mode .calendar-day {
+    background: rgba(42, 35, 28, 0.5);
+}
+
+body.dark-mode .calendar-day:not(.empty):hover {
+    background: rgba(52, 45, 38, 0.8);
+}
+
+body.dark-mode .calendar-book-item {
+    background: rgba(42, 35, 28, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .analytics-section {
+    background: rgba(42, 35, 28, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .theme-toggle,
+body.dark-mode .icon-btn {
+    background: rgba(42, 35, 28, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .action-btn {
+    background: rgba(42, 35, 28, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-main);
+}
+
+/* 12. Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 1rem;
+    }
+
+    .logo-title {
+        font-size: 1.5rem;
+    }
+
+    .book-count {
+        font-size: 0.9rem;
+    }
+
+    .book-pages {
+        flex-direction: column;
+    }
+
+    .book-page {
+        padding: 1.5rem 1rem;
+    }
+
+    .modal-book-cover {
+        max-width: 120px;
+        max-height: 180px;
+    }
+
+    .modal-book-title {
+        font-size: 1.15rem;
+    }
+
+    .form-dates {
+        grid-template-columns: 1fr;
+    }
+
+    .reading-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .calendar-books-list {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}

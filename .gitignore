@@ -1,0 +1,28 @@
+# Re:Lib 프로젝트 파일
+
+# API 키 및 환경 설정 파일 (절대 커밋하지 않음)
+config.js
+.env
+.env.local
+
+# 운영체제 파일
+.DS_Store
+Thumbs.db
+
+# 에디터 설정
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 로그 파일
+*.log
+npm-debug.log*
+
+# 임시 파일
+*.tmp
+*.swp
+*~
+
+# Node modules (필요시)
+node_modules/
