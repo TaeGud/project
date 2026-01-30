@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re:Lib - 나만의 독서 기록 서재</title>
+    <meta name="description" content="당신만의 독서 기록을 아름답게 관리하세요. 책을 검색하고, 리뷰를 작성하고, 나만의 디지털 서재를 꾸며보세요.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-mode">
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo-icon">📚</div>
+                <h1 class="logo-title">Re:Lib</h1>
+                <span class="tier-badge" id="tierBadge" style="display: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                    <span id="tierText"></span>
+                </span>
+            </div>
+
+            <div class="header-right">
+                <div class="book-count">
+                    총 <strong id="totalBooks">0</strong>권 완독
+                </div>
+                <button id="calendarBtn" class="icon-btn" aria-label="독서 캘린더">
+                    📅
+                </button>
+                <button id="themeToggle" class="theme-toggle" aria-label="다크모드 토글">
+                    <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <svg id="sunIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" style="display: none;">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="container">
+        <h1 class="main-title">📚 Re:Lib - 나만의 독서 기록</h1>
+
+        <!-- Achievement Section -->
+        <div id="achievement" class="achievement" style="display: none;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                class="achievement-icon">
+                <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <div class="achievement-content">
+                <h3 class="achievement-title" id="achievementTitle"></h3>
+                <p class="achievement-text">책을 더 읽고 서재를 업그레이드하세요</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="책 제목이나 저자를 검색하세요..." class="search-input">
+                <button id="searchBtn" class="search-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.35-4.35" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Search Results -->
+            <div id="searchResults" class="search-results" style="display: none;"></div>
+        </div>
+
+        <!-- 읽는 중인 책 섹션 -->
+        <section id="readingSection" class="reading-section" style="display: none;">
+            <h2 class="section-title">
+                📖 지금 읽고 있는 책
+            </h2>
+            <div id="readingGrid" class="reading-grid"></div>
+        </section>
+
+        <!-- Library Section -->
+        <div class="library-section">
+            <h2 class="library-title">
+                <span>나의 서재</span>
+                <span class="avg-rating" id="avgRating"></span>
+            </h2>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    class="empty-icon">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+                <h3 class="empty-title">아직 완독한 책이 없습니다.</h3>
+                <p class="empty-text">첫 번째 책을 검색하고 기록해보세요!</p>
+            </div>
+
+            <!-- Bookshelf -->
+            <div id="bookshelf" class="bookshelf" style="display: none;">
+                <div class="bookshelf-inner" id="bookshelfGrid"></div>
+            </div>
+        </div>
+
+        <!-- Reading Analytics Section -->
+        <section id="analyticsSection" class="analytics-section" style="display: none;">
+            <h2 class="section-title">📊 독서 분석</h2>
+            <div id="categoryStats" class="category-stats"></div>
+        </section>
+
+    </main>
+
+    <!-- Book Modal -->
+    <div id="bookModal" class="modal-overlay" style="display: none;">
+        <div class="modal-wrapper">
+            <button id="closeModal" class="close-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+
+            <div class="book-pages">
+                <!-- Left Page -->
+                <div class="book-page left-page">
+                    <div class="page-shadow"></div>
+                    <div class="page-content-center">
+                        <img id="modalBookCover" src="" alt="" class="modal-book-cover">
+                        <h2 id="modalBookTitle" class="modal-book-title"></h2>
+                        <p id="modalBookAuthor" class="modal-book-author"></p>
+                        <p id="modalBookPublisher" class="modal-book-publisher"></p>
+                    </div>
+                </div>
+
+                <!-- Right Page -->
+                <div class="book-page right-page">
+                    <form id="bookForm" class="book-form">
+                        <h3 class="form-title">독서 기록</h3>
+
+                        <!-- Rating -->
+                        <div class="form-group">
+                            <label class="form-label">별점</label>
+                            <div class="star-rating" id="starRating">
+                                <button type="button" class="star-btn" data-rating="1">
+                                    <svg class="star-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                                        stroke="#D1D5DB" stroke-width="2">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="star-btn" data-rating="2">
+                                    <svg class="star-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                                        stroke="#D1D5DB" stroke-width="2">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="star-btn" data-rating="3">
+                                    <svg class="star-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                                        stroke="#D1D5DB" stroke-width="2">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="star-btn" data-rating="4">
+                                    <svg class="star-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                                        stroke="#D1D5DB" stroke-width="2">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="star-btn" data-rating="5">
+                                    <svg class="star-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                                        stroke="#D1D5DB" stroke-width="2">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Dates -->
+                        <div class="form-dates">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                        <line x1="16" y1="2" x2="16" y2="6" />
+                                        <line x1="8" y1="2" x2="8" y2="6" />
+                                        <line x1="3" y1="10" x2="21" y2="10" />
+                                    </svg>
+                                    시작일
+                                </label>
+                                <input type="date" id="startDate" class="date-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">완독일</label>
+                                <input type="date" id="endDate" class="date-input">
+                            </div>
+                        </div>
+
+                        <!-- Review -->
+                        <div class="form-group">
+                            <label class="form-label">감상평</label>
+                            <textarea id="reviewText" placeholder="이 책을 읽고 느낀 점을 자유롭게 작성해보세요..." rows="6"
+                                class="review-textarea"></textarea>
+                        </div>
+
+                        <!-- Privacy -->
+                        <div class="form-privacy">
+                            <label class="form-label">공개 설정</label>
+                            <button type="button" id="privacyToggle" class="privacy-btn private">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" class="lock-icon">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" class="unlock-icon" style="display: none;">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 9.9-1" />
+                                </svg>
+                                <span id="privacyText">비공개</span>
+                            </button>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="submit-btn">
+                            📚 완독하고 서재에 꽂기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calendar Modal -->
+    <div id="calendarModal" class="modal-overlay" style="display: none;">
+        <div class="calendar-wrapper">
+            <div class="calendar-header">
+                <h2 class="calendar-title">📅 독서 캘린더</h2>
+                <button id="closeCalendar" class="close-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <div class="calendar-controls">
+                <button id="prevMonth" class="calendar-nav-btn">◀</button>
+                <h3 id="calendarMonth" class="calendar-month"></h3>
+                <button id="nextMonth" class="calendar-nav-btn">▶</button>
+            </div>
+            <div class="calendar-view-options">
+                <button id="viewAllBooks" class="calendar-view-btn">📚 이번 달 전체 보기</button>
+            </div>
+            <div id="calendarGrid" class="calendar-grid"></div>
+            <div id="calendarBooks" class="calendar-books"></div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
