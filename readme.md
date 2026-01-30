@@ -1,45 +1,37 @@
-The project is already configured to run directly from `index.html` without needing separate `.json` files for the core book data at runtime.
+📄 [바이브코딩] 해커톤 프로젝트 README
+"기록을 통해 독서의 깊이를 더하기, 독서 기록 서비스"
 
-Here's how it works:
-1.  **`index.html`**: This is the main file you can open directly in a web browser.
-2.  **`script.js`**: This file contains the initial `readingBooks` and `completedBooks` data directly as JavaScript arrays. It also uses `localStorage` to save and load your book records, so your data persists across sessions. This eliminates the need to fetch external JSON data files during runtime.
-3.  **`style.css`**: Provides the styling for the application.
-4.  **`config.js`**: This file (which contains the `KAKAO_API_KEY` for the book search functionality) is also loaded by `index.html`.
+🔗 프로젝트 링크
+Repository: https://github.com/TaeGud/project
 
-The files `book_covers.json`, `reading_books_covers.json`, `fetch_covers.js`, `get_covers.js`, and `get_reading_covers.js` appear to be part of a separate data preparation or management process, and are not actively loaded or used by `index.html` or `script.js` when the application runs in the browser.
+아이디어 및 목적 (Why & What)
+💡 기획 배경
+단순히 책을 읽는 것에서 그치지 않고, 기록을 통해 얻은 깨달음을 오래 간직하기 위해 시작되었습니다. 내가 어떤 분야의 책을 좋아하는지 스스로의 취향을 시각적으로 확인하고, 독서 습관을 체계적으로 관리하여 독서의 질을 높이는 것을 목표로 합니다.
 
-You can simply open `index.html` in your web browser to use the application.
-# 📄 [팀명] 바이브코딩 해커톤 프로젝트 README
-이곳에 프로젝트를 한 문장으로 요약해 주세요. (예: AI를 활용한 개인 맞춤형 할 일 관리 웹 서비스). 
-독서 기록 앱
-## 🔗 프로젝트 링크
-배포 URL: [여기에 링크 입력] (예: Vercel, Netlify, GitHub Pages 등). 
+✨ 주요 기능
+독서량 체크: 월별/연도별 읽은 책 권수를 그래프로 확인
 
+독서 기록 및 보관: 인상 깊은 구절, 느낀 점을 카테고리별로 저장
 
-## 1️⃣ 아이디어 및 목적 (Why & What)
-채점 포인트: 자신의 독서량을 체크하고 책을 읽고 기록하기 위해서 
+취향 분석: 기록된 데이터를 바탕으로 내가 선호하는 장르와 키워드 파악
 
-### 기획 배경: 이 서비스를 왜 만들게 되었나요? (해결하려는 문제점)
-기록을 통해 개달음을 오래 가고 내가 어떤 책을 좋아하는 지에 대한 생각을 다시 할 수 있게 하기 위해서 
-### 주요 기능: 사용자에게 제공하는 핵심 기능은 무엇인가요?  
-
-### 타겟 사용자: 이 앱을 누가 사용하면 좋을까요?  
-책을 읽는 사람 
-## 2️⃣ 실제 동작 및 완성도 (How it works)
-채점 포인트: 앱의 정상 실행 여부와 핵심 기능의 구현 수준을 설명하세요.  
-
-### 실행 방법
-
-### 핵심 기능 스크린샷/설명: 주요 화면이나 동작 과정을 간단히 작성해 주세요.
-
-## 3️⃣ AI 협업 및 활용 (AI Collaboration)
-채점 포인트: AI를 어떻게 도구로 활용했는지 구체적으로 기술하세요.
-
-### 아이디어 & 구조: AI를 활용해 서비스의 구조나 데이터 모델을 어떻게 잡았나요?
+대시보드: 현재 읽고 있는 책과 목표 달성률을 한눈에 확인
 
 
-### 구현 & 문제 해결: 코딩 중 막혔던 부분이나 에러를 AI와 어떻게 해결했나요? (사용한 프롬프트 예시 포함)
-[프롬프트 히스토리를 적어주세요~]
+🎯 타겟 사용자
+책을 읽고 금방 내용을 잊어버려 기록의 필요성을 느끼는 분
 
-### 학습 경험: AI와 협업하며 새롭게 알게 된 기능이나 역할에 대해 적어주세요.
+자신의 독서 데이터를 시각적으로 관리하고 싶은 애서가
 
+꾸준한 독서 습관을 형성하고 싶은 대학생 및 직장인
+
+3️⃣ AI 협업 및 활용 (AI Collaboration)
+
+AI에게 필요한 정보들이나 뒷받췸 되어야하는 로직을 물어 더욱 쉽게 프레임워크를 세우고 차근차근 코드를 고쳐 나갈 수 있었습니다. 
+
+🛠️ 구현 & 문제 해결
+프로젝트 진행 중 API 연동과 실시간 데이터 반영(State Management) 부분에서 발생한 에러를 AI와의 질의응답을 통해 해결했습니다.
+구현중 제가 생각한 구조대로 들어가지 않거나 색감을 이상하게 설정하는 일이 있어 프롬포틍에 내가 원하는 그림이나 이상적인 그림을 보내 LLM에게 이해를 더했습니다. 
+
+📚 학습 경험
+AI와 협업하며 단순히 코드를 생성하는 것을 넘어,'프롬프트 엔지니어링'이 개발 속도와 코드 퀄리티에 미치는 영향을 체감했습니다. 특히 복잡한 로직을 작은 단위로 나누어 질문할수록 더 정확한 디버깅이 가능하다는 점을 배웠으며, AI를 코드 리뷰어로서 활용하는 법을 익혔습니다.
